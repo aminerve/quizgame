@@ -10,43 +10,63 @@ const b = document.querySelector('.b')
 const c = document.querySelector('.c')
 const d = document.querySelector('.d')
 
+function reset(){
+    setTimeout(()=>{
+    a.classList.remove('correct', 'incorrect')
+    b.classList.remove('correct', 'incorrect')
+    c.classList.remove('correct', 'incorrect')
+    d.classList.remove('correct', 'incorrect')}
+    ,500)
+}
 let currentQuestion = 1;
 
 function nextQuestion() {
-  currentQuestion++;
-  if (currentQuestion === 2) {
-    question2();
-  } else if (currentQuestion === 3) {
-    question3();
-  } else if (currentQuestion === 4) {
-    question4();
-  } else if (currentQuestion === 5) {
-    question5();
-  } else if (currentQuestion === 6) {
-    question6();
-  } else if (currentQuestion === 7) {
-    question7();
-  } else if (currentQuestion === 8) {
-    question8();
-  } else if (currentQuestion === 9) {
-    question9();
-  } else if (currentQuestion === 10) {
-    question10();
-  } else {
-    // no more questions, display end of quiz message
-    question.innerHTML = "Congratulations, you've completed the quiz!";
-    a.style.display = 'none';
-    b.style.display = 'none';
-    c.style.display = 'none';
-    d.style.display = 'none';
+    currentQuestion++;
+    if (currentQuestion === 2) {
+      setTimeout(question2, 1500);
+      setTimeout(reset, 1500);
+    } else if (currentQuestion === 3) {
+      setTimeout(question3, 1500);
+      setTimeout(reset, 1500);
+    } else if (currentQuestion === 4) {
+      setTimeout(question4, 1500);
+      setTimeout(reset, 1500);
+    } else if (currentQuestion === 5) {
+      setTimeout(question5, 1500);
+      setTimeout(reset, 1500);
+    } else if (currentQuestion === 6) {
+      setTimeout(question6, 1500);
+      setTimeout(reset, 1500);
+    } else if (currentQuestion === 7) {
+      setTimeout(question7, 1500);
+      setTimeout(reset, 1500);
+    } else if (currentQuestion === 8) {
+      setTimeout(question8, 1500);
+      setTimeout(reset, 1500);
+    } else if (currentQuestion === 9) {
+      setTimeout(question9, 1500);
+      setTimeout(reset, 1500);
+    } else if (currentQuestion === 10) {
+      setTimeout(question10, 1500);
+      setTimeout(reset, 1500);
+    } else {
+      // no more questions, display end of quiz message
+      question.innerHTML = "Congratulations, you've completed the quiz!";
+      a.style.display = 'none';
+      b.style.display = 'none';
+      c.style.display = 'none';
+      d.style.display = 'none';
+    }
   }
-}
+  
+// setInterval(nextQuestion,1500)
 // choices.forEach((choice) =>{
 //     choice.addEventListener('click', function(){
 //         console.log('click')})
 //         // nextQuestion()
 // })
 
+            
 
 function question1(){
     question.innerHTML = 'What type of animal was Dumbo?'
@@ -58,30 +78,46 @@ function question1(){
     a.addEventListener('click',()=>{
         a.classList.add('incorrect')
         c.classList.add('correct');
+        // a.onclick = null
+        reset()
         nextQuestion()
+        
     })
     b.addEventListener('click',()=>{
         b.classList.add('incorrect')
         c.classList.add('correct')
+        // b.onclick = null
+        reset()
         nextQuestion()
+        
     })
     c.addEventListener('click',()=>{
         c.classList.add('correct')
-        setInterval(()=>{
-            c.classList.remove('correct')
-            question2()
-            a.classList.remove('incorrect')
-            b.classList.remove('incorrect')
-            d.classList.remove('incorrect')
+        // c.onclick = null
+        reset()
+        nextQuestion()
+        
+        // setInterval(()=>{
+        //     c.classList.remove('correct')
+        //     question2()
+        //     a.classList.remove('incorrect')
+        //     b.classList.remove('incorrect')
+        //     d.classList.remove('incorrect')
 
-        },1500)
+        // },1500)
 
     })
     d.addEventListener('click',()=>{
         d.classList.add('incorrect')
         c.classList.add('correct')
+        // d.onclick = null
+        reset()
+        nextQuestion()
     })
-
+    a.onclick = null
+    b.onclick = null
+    c.onclick = null
+    d.onclick = null
 }
 question1()
 function question2(){
@@ -94,30 +130,39 @@ function question2(){
     a.addEventListener('click',()=>{
         a.classList.add('incorrect')
         d.classList.add('correct')
+        // a.onclick = null
+        reset()
         nextQuestion()
     })
     b.addEventListener('click',()=>{
         b.classList.add('incorrect')
         d.classList.add('correct')
+        // a.onclick = null
+        reset()
         nextQuestion()
     })
     c.addEventListener('click',()=>{
         c.classList.add('incorrect')
         d.classList.add('correct');
+        // c.onclick = null
+        reset()
         nextQuestion()
 
     })
     d.addEventListener('click',()=>{
         d.classList.add('correct')
-        setInterval(()=>{
-            c.classList.remove('correct')
-            a.classList.remove('false')
-            b.classList.remove('false')
-            d.classList.remove('false')
-            question3()
-        },1500)
+        // d.onclick = null
+        reset()
+        nextQuestion()
+
     })
+    a.onclick = null
+    b.onclick = null
+    c.onclick = null
+    d.onclick = null
 }
+
+
 function question3(){
     question.innerHTML = 'When playing Blackjack, how many points would be considered a bust?'
     a.innerHTML = 'A: 22'
@@ -145,6 +190,7 @@ function question3(){
         nextQuestion()
     })
 }
+
 function question4(){
     question.innerHTML = 'Oysters can change something most other animals cannot. What is it?'
     a.innerHTML = 'A: Their size'
@@ -164,6 +210,13 @@ function question4(){
     })
     c.addEventListener('click',()=>{
         c.classList.add('correct')
+        // setInterval(()=>{
+        //     a.classList.remove('incorrect')
+        //     b.classList.remove('incorrect')
+        //     c.classList.remove('correct')
+        //     d.classList.remove('incorrect')
+        //     question3()
+        // },1500)
         nextQuestion()
     })
     d.addEventListener('click',()=>{
@@ -172,6 +225,7 @@ function question4(){
         nextQuestion()
     })
 }
+
 function question5(){
     question.innerHTML = `What was Will Ferrell's character's name in the 2003 hit movie "Elf"?`
     a.innerHTML = 'A: Elf'
@@ -336,3 +390,10 @@ function question10(){
     })
 }
 
+        // setInterval(()=>{
+        //     c.classList.remove('correct')
+        //     a.classList.remove('incorrect')
+        //     b.classList.remove('incorrect')
+        //     d.classList.remove('incorrect')
+        //     question3()
+        // },1500)
